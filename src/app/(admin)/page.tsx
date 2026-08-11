@@ -1,5 +1,4 @@
 import AnimatedStoreIntro from "@/components/home/AnimatedStoreIntro";
-import { getProducts, getTestimonials } from "@/lib/catalog";
 import type { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
@@ -11,18 +10,6 @@ export const metadata: Metadata = {
     "Temukan produk digital, testimoni transaksi, status order, dan dukungan resmi QEVANORA OFFICIAL dalam satu website.",
 };
 
-export default async function HomePage() {
-  const [products, testimonials] = await Promise.all([
-    getProducts(),
-    getTestimonials(),
-  ]);
-
-  return (
-    <>
-      <AnimatedStoreIntro
-        initialProducts={products}
-        initialTestimonials={testimonials}
-      />
-    </>
-  );
+export default function HomePage() {
+  return <AnimatedStoreIntro />;
 }
