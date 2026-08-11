@@ -89,8 +89,13 @@ const AppHeader: React.FC = () => {
               className="qevanora-brand-mark h-9 w-9 shrink-0 object-contain"
               priority
             />
-            <span className="qevanora-brand-wordmark max-w-[118px] truncate whitespace-nowrap text-sm font-bold min-[380px]:max-w-[180px] min-[380px]:text-base sm:text-lg">
-              QEVANORA OFFICIAL
+            <span className="min-w-0 max-w-[118px] leading-none min-[380px]:max-w-[180px]">
+              <span className="qevanora-brand-wordmark block truncate whitespace-nowrap text-sm font-bold min-[380px]:text-base sm:text-lg">
+                QEVANORA OFFICIAL
+              </span>
+              <span className="mt-1 block text-[8px] font-bold tracking-[0.24em] text-brand-500 min-[380px]:text-[9px]">
+                ꜰʀᴇᴇʟᴀɴᴄᴇ
+              </span>
             </span>
           </Link>
           <div className="flex shrink-0 items-center gap-2 lg:hidden">

@@ -38,8 +38,13 @@ export default function AppSidebar() {
             priority
           />
           {showLabels && (
-            <span className="qevanora-brand-wordmark whitespace-nowrap text-lg font-bold">
-              QEVANORA OFFICIAL
+            <span className="leading-none">
+              <span className="qevanora-brand-wordmark block whitespace-nowrap text-lg font-bold">
+                QEVANORA OFFICIAL
+              </span>
+              <span className="mt-1.5 block text-[9px] font-bold tracking-[0.28em] text-brand-500">
+                ꜰʀᴇᴇʟᴀɴᴄᴇ
+              </span>
             </span>
           )}
         </Link>
