@@ -4,9 +4,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSidebar } from "../context/SidebarContext";
+import FreelanceIcon from "../icons/freelance.svg";
 import HomeIcon from "../icons/home.svg";
 
-const navItems = [{ icon: <HomeIcon />, name: "ʜᴏᴍᴇ", path: "/" }];
+const navItems = [
+  { icon: <HomeIcon />, name: "ʜᴏᴍᴇ", path: "/" },
+  {
+    icon: <FreelanceIcon />,
+    name: "ꜰʀᴇᴇʟᴀɴᴄᴇ",
+    path: "/freelance",
+  },
+];
 
 export default function AppSidebar() {
   const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar();
