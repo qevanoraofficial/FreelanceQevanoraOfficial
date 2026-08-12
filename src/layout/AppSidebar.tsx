@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useSidebar } from "../context/SidebarContext";
 import FreelanceIcon from "../icons/freelance.svg";
 import HomeIcon from "../icons/home.svg";
+import TestimonialMenuIcon from "../icons/testimonial-menu.svg";
 
 const navItems = [
   { icon: <HomeIcon />, name: "ʜᴏᴍᴇ", path: "/" },
@@ -13,6 +14,11 @@ const navItems = [
     icon: <FreelanceIcon />,
     name: "ꜰʀᴇᴇʟᴀɴᴄᴇ",
     path: "/freelance",
+  },
+  {
+    icon: <TestimonialMenuIcon />,
+    name: "ᴛᴇꜱᴛɪᴍᴏɴɪ",
+    path: "/testimonials",
   },
 ];
 
