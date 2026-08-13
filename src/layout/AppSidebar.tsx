@@ -21,6 +21,19 @@ const BlacklistIcon = () => (
   </svg>
 );
 
+const TutorialIcon = () => (
+  <svg
+    aria-hidden="true"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M21 4H14.5A3.5 3.5 0 0 0 12 5.05 3.5 3.5 0 0 0 9.5 4H3a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h6.5a1.5 1.5 0 0 1 1.5 1.5h2A1.5 1.5 0 0 1 14.5 20H21a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1Zm-10 14.26A3.5 3.5 0 0 0 9.5 18H4V6h5.5A1.5 1.5 0 0 1 11 7.5v10.76ZM20 18h-5.5a3.5 3.5 0 0 0-1.5.34V7.5A1.5 1.5 0 0 1 14.5 6H20v12Z" />
+  </svg>
+);
+
 const navItems = [
   { icon: <HomeIcon />, name: "ʜᴏᴍᴇ", path: "/" },
   {
@@ -37,6 +50,11 @@ const navItems = [
     icon: <BlacklistIcon />,
     name: "ʙʟᴀᴄᴋʟɪꜱᴛ",
     path: "/blacklist",
+  },
+  {
+    icon: <TutorialIcon />,
+    name: "ᴛᴜᴛᴏʀɪᴀʟ",
+    path: "/tutorial",
   },
 ];
 
