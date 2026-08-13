@@ -28,10 +28,7 @@ export async function POST(request: Request) {
   }
 
   try {
-    const response = NextResponse.redirect(
-      new URL("/admin/panel", request.url),
-      303,
-    );
+    const response = NextResponse.redirect(new URL("/admin", request.url), 303);
 
     response.cookies.set({
       name: ADMIN_SESSION_COOKIE,
