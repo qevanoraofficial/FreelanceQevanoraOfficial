@@ -34,6 +34,19 @@ const TutorialIcon = () => (
   </svg>
 );
 
+const AdminMenuIcon = () => (
+  <svg
+    aria-hidden="true"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M12 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm-1 10c-5.33 0-8 2.67-8 6v1h8.08a6.96 6.96 0 0 1-.08-1c0-2.39 1.19-4.5 3-5.77A12.7 12.7 0 0 0 11 14Zm7-1-5 2v3.5c0 3.08 2.13 5.96 5 6.5 2.87-.54 5-3.42 5-6.5V15l-5-2Zm0 2.15 3 1.2v2.15c0 1.95-1.23 3.89-3 4.45-1.77-.56-3-2.5-3-4.45v-2.15l3-1.2Z" />
+  </svg>
+);
+
 const navItems = [
   { icon: <HomeIcon />, name: "ʜᴏᴍᴇ", path: "/" },
   {
@@ -55,6 +68,11 @@ const navItems = [
     icon: <TutorialIcon />,
     name: "ᴛᴜᴛᴏʀɪᴀʟ",
     path: "/tutorial",
+  },
+  {
+    icon: <AdminMenuIcon />,
+    name: "ᴀᴅᴍɪɴ ᴍᴇɴᴜ",
+    path: "/admin",
   },
 ];
 
