@@ -5,15 +5,15 @@ import {
   timingSafeEqual,
 } from "node:crypto";
 
-export const ADMIN_SESSION_COOKIE = "qevanora_admin_session";
+export const ADMIN_SESSION_COOKIE = "qevanora_admin_session_v2";
 export const ADMIN_SESSION_MAX_AGE = 60 * 60 * 8;
 
-const PASSWORD_SALT = "e4bbfe933e81c79b95d838d8dc3e9a40";
+const PASSWORD_SALT = "b0dd08be7da0ee73f5acb20c14fd392c";
 const PASSWORD_HASH =
-  "c92051d1d10a7663553b66cfc97a9d51ae7741c6cde16838539117828fbe845f1de6802b510fc2db927fd58e2ac6607a77fdd439e2169f1c89bb260b1bf510d6";
+  "3297dba8a2af8561a2d94ba6dbfb7d14dcb33b7ff618a7a16938272844bc81f7096e17cec4ce9844c8841763600b69d7c6420dacab0a4ddae78f6aad9b0e654b";
 
 type AdminSessionPayload = {
-  version: 1;
+  version: 2;
   expiresAt: number;
   nonce: string;
 };
@@ -59,7 +59,7 @@ export function verifyAdminPassword(password: string): boolean {
 
 export function createAdminSessionToken(): string {
   const payload: AdminSessionPayload = {
-    version: 1,
+    version: 2,
     expiresAt: Date.now() + ADMIN_SESSION_MAX_AGE * 1000,
     nonce: randomBytes(18).toString("hex"),
   };
@@ -92,7 +92,7 @@ export function verifyAdminSessionToken(token?: string | null): boolean {
     ) as Partial<AdminSessionPayload>;
 
     return (
-      payload.version === 1 &&
+      payload.version === 2 &&
       typeof payload.expiresAt === "number" &&
       payload.expiresAt > Date.now() &&
       typeof payload.nonce === "string" &&
