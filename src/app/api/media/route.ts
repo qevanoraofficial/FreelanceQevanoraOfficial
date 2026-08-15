@@ -6,7 +6,9 @@ import { readRepositoryFile } from "@/lib/github-store";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const ALLOWED_MEDIA_PATH = /^storage\/(products|testimonials)\/[A-Za-z0-9._-]+$/;
+const ALLOWED_MEDIA_PATH =
+  /^storage\/(products|testimonials|freelance)\/[A-Za-z0-9._-]+$/;
+
 const CONTENT_TYPES: Record<string, string> = {
   jpg: "image/jpeg",
   jpeg: "image/jpeg",
@@ -31,7 +33,9 @@ async function readLocalMedia(path: string): Promise<Buffer | null> {
 
 export async function GET(request: NextRequest) {
   try {
-    const path = String(request.nextUrl.searchParams.get("path") || "").trim();
+    const path = String(
+      request.nextUrl.searchParams.get("path") || "",
+    ).trim();
 
     if (!ALLOWED_MEDIA_PATH.test(path)) {
       return NextResponse.json(
@@ -56,8 +60,10 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const extension = path.split(".").pop()?.toLowerCase() || "";
-    const contentType = CONTENT_TYPES[extension] || "application/octet-stream";
+    const extension =
+      path.split(".").pop()?.toLowerCase() || "";
+    const contentType =
+      CONTENT_TYPES[extension] || "application/octet-stream";
 
     return new NextResponse(new Uint8Array(bytes), {
       status: 200,
@@ -66,7 +72,9 @@ export async function GET(request: NextRequest) {
         "Content-Length": String(bytes.length),
         "Cache-Control":
           "public, max-age=300, s-maxage=300, stale-while-revalidate=86400",
-        "Content-Disposition": `inline; filename="${path.split("/").pop() || "media"}"`,
+        "Content-Disposition": `inline; filename="${
+          path.split("/").pop() || "media"
+        }"`,
         "X-Content-Type-Options": "nosniff",
         ...(etag ? { ETag: `"${etag}"` } : {}),
       },
@@ -75,9 +83,15 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(
       {
         ok: false,
-        error: error instanceof Error ? error.message : "Media gagal dibaca.",
+        error:
+          error instanceof Error
+            ? error.message
+            : "Media gagal dibaca.",
       },
-      { status: 500, headers: { "Cache-Control": "no-store" } },
+      {
+        status: 500,
+        headers: { "Cache-Control": "no-store" },
+      },
     );
   }
 }
