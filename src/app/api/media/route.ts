@@ -7,7 +7,7 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const ALLOWED_MEDIA_PATH =
-  /^storage\/(products|testimonials|freelance)\/[A-Za-z0-9._-]+$/;
+  /^storage\/(products|testimonials|freelance|testimoni|blacklist|tutorial)\/[A-Za-z0-9._-]+$/;
 
 const CONTENT_TYPES: Record<string, string> = {
   jpg: "image/jpeg",
