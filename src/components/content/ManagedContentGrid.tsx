@@ -25,15 +25,9 @@ export default function ManagedContentGrid({
   return (
     <div className="space-y-6">
       <section className="qevanora-card rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-white/[0.03] sm:p-8">
-        <p className="text-xs font-bold tracking-[0.24em] text-brand-500">
-          {eyebrow}
-        </p>
-        <h1 className="mt-2 text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
-          {title}
-        </h1>
-        <p className="mt-3 text-sm leading-7 text-gray-600 dark:text-gray-300">
-          {description}
-        </p>
+        <p className="text-xs font-bold tracking-[0.24em] text-brand-500">{eyebrow}</p>
+        <h1 className="mt-2 text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">{title}</h1>
+        <p className="mt-3 text-sm leading-7 text-gray-600 dark:text-gray-300">{description}</p>
       </section>
 
       {error && (
@@ -44,32 +38,30 @@ export default function ManagedContentGrid({
 
       {!error && items.length === 0 && (
         <section className="qevanora-card rounded-2xl border border-gray-200 bg-white p-8 text-center dark:border-gray-800 dark:bg-white/[0.03]">
-          <p className="text-sm text-gray-500 dark:text-gray-400">
-            {emptyMessage}
-          </p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">{emptyMessage}</p>
         </section>
       )}
 
       <section className="grid gap-6 lg:grid-cols-2">
         {items.map((item) => (
           <article
+            id={`content-${item.id}`}
             key={item.id}
-            className="qevanora-card overflow-hidden rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
+            className="qevanora-card scroll-mt-24 overflow-hidden rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
           >
             <div className="relative aspect-[16/9] w-full overflow-hidden bg-black/20">
               <Image
                 src={mediaUrl(item.imagePath)}
                 alt={item.name}
                 fill
+                unoptimized
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
             </div>
 
             <div className="p-5 sm:p-6">
-              <h2 className="break-words text-xl font-bold text-gray-900 dark:text-white">
-                {item.name}
-              </h2>
+              <h2 className="break-words text-xl font-bold text-gray-900 dark:text-white">{item.name}</h2>
               <p className="mt-3 whitespace-pre-wrap break-words text-sm leading-7 text-gray-600 dark:text-gray-300">
                 {item.text}
               </p>
