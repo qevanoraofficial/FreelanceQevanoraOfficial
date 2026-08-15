@@ -3,7 +3,6 @@ import {
   ADMIN_SESSION_COOKIE,
   verifyAdminSessionToken,
 } from "@/lib/admin-auth";
-import { getProducts, getTestimonials } from "@/lib/catalog";
 import { getMemberSummary } from "@/lib/member-stats";
 import type { MemberSummary } from "@/lib/member-stats";
 import { getVisitorSummary } from "@/lib/visitor-stats";
@@ -17,11 +16,7 @@ export const revalidate = 0;
 
 export const metadata: Metadata = {
   title: "Admin Panel | QEVANORA OFFICIAL",
-  robots: {
-    index: false,
-    follow: false,
-    nocache: true,
-  },
+  robots: { index: false, follow: false, nocache: true },
 };
 
 const emptyVisitorSummary: VisitorSummary = {
@@ -51,41 +46,21 @@ export default async function AdminPanelPage() {
     redirect("/qevanora-control");
   }
 
-  const [productsResult, testimonialsResult, visitorsResult, membersResult] =
-    await Promise.allSettled([
-      getProducts({ includeInactive: true, strict: true }),
-      getTestimonials({ strict: true }),
-      getVisitorSummary(),
-      getMemberSummary(),
-    ]);
+  const [visitorsResult, membersResult] = await Promise.allSettled([
+    getVisitorSummary(),
+    getMemberSummary(),
+  ]);
 
-  const errors = Array.from(
-    new Set(
-      [
-        productsResult,
-        testimonialsResult,
-        visitorsResult,
-        membersResult,
-      ]
-        .filter((result) => result.status === "rejected")
-        .map((result) =>
-          result.status === "rejected" && result.reason instanceof Error
-            ? result.reason.message
-            : "Sebagian data admin gagal dimuat.",
-        ),
-    ),
-  );
+  const errors = [visitorsResult, membersResult]
+    .filter((result) => result.status === "rejected")
+    .map((result) =>
+      result.status === "rejected" && result.reason instanceof Error
+        ? result.reason.message
+        : "Sebagian data dashboard gagal dimuat.",
+    );
 
   return (
     <AdminDashboard
-      initialProducts={
-        productsResult.status === "fulfilled" ? productsResult.value : []
-      }
-      initialTestimonials={
-        testimonialsResult.status === "fulfilled"
-          ? testimonialsResult.value
-          : []
-      }
       initialVisitorSummary={
         visitorsResult.status === "fulfilled"
           ? visitorsResult.value
