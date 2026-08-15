@@ -5,9 +5,9 @@ export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
 export const metadata: Metadata = {
-  title: "QEVANORA OFFICIAL | Produk Digital Terpercaya",
+  title: "QEVANORA OFFICIAL | Jasa Freelance Digital",
   description:
-    "Temukan produk digital, testimoni transaksi, status order, dan dukungan resmi QEVANORA OFFICIAL dalam satu website.",
+    "QEVANORA OFFICIAL menyediakan layanan freelance digital dengan komunikasi jelas, proses kerja terarah, harga transparan, dan hasil sesuai kebutuhan.",
 };
 
 export default function HomePage() {
